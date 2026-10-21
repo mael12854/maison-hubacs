@@ -3,7 +3,7 @@
 (function () {
   var form = document.getElementById('visit-form');
   if (!form) return;
-  var to = 'sandiade@yopmail.com';
+  var to = 'dom.artore@gmail.com';
   var note = document.getElementById('form-note');
   var button = form.querySelector('button[type="submit"]');
   var openedAt = Date.now();
