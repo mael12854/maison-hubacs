@@ -170,6 +170,28 @@
           if (!ok) { save.disabled = false; save.textContent = 'Enregistrer la note'; }
         });
       });
+      var delBtn = q('delete');
+      if (d.statut !== 'archivee') {
+        delBtn.remove();
+      } else {
+        delBtn.addEventListener('click', function () {
+          if (!window.confirm('Supprimer définitivement la demande de ' + d.nom + ' ? Cette action est irréversible.')) return;
+          delBtn.disabled = true;
+          delBtn.textContent = 'Suppression…';
+          api('/api/proprietaire/demandes', { method: 'DELETE', body: JSON.stringify({ id: d.id }) })
+            .then(function () {
+              demandes = demandes.filter(function (x) { return x.id !== d.id; });
+              render();
+            })
+            .catch(function (err) {
+              delBtn.disabled = false;
+              delBtn.textContent = 'Supprimer définitivement';
+              var note = $('board-note');
+              note.className = 'form__note is-error';
+              note.textContent = err.message;
+            });
+        });
+      }
       list.append(node);
     });
   }

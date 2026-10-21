@@ -1,8 +1,9 @@
 // /api/proprietaire/demandes (session Propriétaire obligatoire)
 //   GET   : liste des demandes, la plus récente en premier
 //   PATCH : { id, statut?, note? } met à jour une demande
+//   DELETE : { id } supprime définitivement une demande archivée
 import { isOwner, json, sameOrigin } from '../../lib/auth.js';
-import { isValidId, listDemandes, readDemande, saveDemande, STATUTS } from '../../lib/demandes.js';
+import { deleteDemande, isValidId, listDemandes, readDemande, saveDemande, STATUTS } from '../../lib/demandes.js';
 
 export async function GET(request) {
   if (!isOwner(request)) return json({ error: 'Non connecté' }, 401);
@@ -38,4 +39,27 @@ export async function PATCH(request) {
 
   await saveDemande(demande);
   return json({ demande });
+}
+
+export async function DELETE(request) {
+  if (!sameOrigin(request)) return json({ error: 'Origine refusée' }, 403);
+  if (!isOwner(request)) return json({ error: 'Non connecté' }, 401);
+
+  let body;
+  try {
+    body = await request.json();
+  } catch {
+    return json({ error: 'Requête invalide' }, 400);
+  }
+  if (!isValidId(body.id)) return json({ error: 'Demande inconnue' }, 404);
+
+  const demande = await readDemande(body.id);
+  if (!demande) return json({ error: 'Demande inconnue' }, 404);
+  if (demande.statut !== 'archivee') {
+    return json({ error: 'Archivez la demande avant de la supprimer.' }, 409);
+  }
+
+  await deleteDemande(body.id);
+  console.log(`demandes: supprimée ${body.id}`);
+  return json({ supprime: true });
 }

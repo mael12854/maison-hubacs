@@ -17,7 +17,8 @@ Hébergé sur Vercel, projet `maison-hubacs` (équipe « Projets de Maël »).
   Si Brevo échoue, la demande reste enregistrée (l’erreur apparaît dans les logs Vercel).
 - **`/proprietaire`** : espace protégé par un code d'accès. On y voit toutes les demandes,
   on change leur statut (nouvelle, recontactée, visite planifiée, terminée, archivée)
-  et on ajoute une note privée. La page n'est pas indexée par les moteurs de recherche.
+  et on ajoute une note privée. Une demande archivée peut être supprimée définitivement
+  (utile aussi pour une demande d’effacement RGPD). La page n'est pas indexée par les moteurs de recherche.
 
 ### Réglages Vercel nécessaires
 
