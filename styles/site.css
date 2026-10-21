@@ -11,6 +11,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 img { max-width: 100%; display: block; }
+[hidden] { display: none !important; }
 a { color: var(--tuile); text-decoration: underline; text-underline-offset: 3px; transition: color var(--transition); }
 a:hover { color: var(--pin); }
 p { margin: 0; text-wrap: pretty; }
@@ -232,6 +233,10 @@ h1, h2, h3 { margin: 0; font-family: var(--font-titre); font-weight: 400; color:
 .pill input:focus-visible + span { outline: 2px solid var(--tuile); outline-offset: 2px; }
 .form .btn { align-self: flex-start; }
 .form__note { font-size: 13px; color: var(--encre-douce); }
+.form__note.is-ok { color: var(--pin); font-size: 15px; }
+.form__note.is-error { color: var(--tuile); }
+.form .btn[disabled] { opacity: .6; cursor: wait; }
+.trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
 /* ---------- Pied de page ---------- */
 .site-footer { background: var(--pin); color: var(--pierre); }

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Espace propriétaire · Maison des Hubacs</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/tokens.css">
+<link rel="stylesheet" href="styles/site.css">
+<link rel="stylesheet" href="styles/proprietaire.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="/">
+      <span class="mono" aria-hidden="true">H</span>
+      <span>Maison des Hubacs</span>
+    </a>
+    <nav class="nav" aria-label="Espace propriétaire">
+      <span class="label">Espace propriétaire</span>
+      <button class="btn btn--ghost" id="logout" type="button" hidden>Se déconnecter</button>
+    </nav>
+  </div>
+</header>
+
+<main class="container owner">
+
+  <!-- Connexion -->
+  <section id="login-view" class="owner-login" hidden>
+    <span class="label label--tuile">Espace propriétaire</span>
+    <h1>Les demandes de visite</h1>
+    <form class="form" id="login-form">
+      <label class="field">Code d’accès
+        <input name="code" type="password" autocomplete="current-password" required autofocus>
+      </label>
+      <button class="btn btn--primary" type="submit">Entrer</button>
+      <p class="form__note" id="login-note" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <!-- Tableau de bord -->
+  <section id="board-view" hidden>
+    <div class="owner-head">
+      <div>
+        <span class="label label--tuile">Espace propriétaire</span>
+        <h1>Les demandes de visite</h1>
+      </div>
+      <button class="link-arrow" id="refresh" type="button">Actualiser</button>
+    </div>
+
+    <dl class="facts owner-counts" id="counts"></dl>
+
+    <fieldset class="pills owner-filter" id="filter">
+      <legend>Afficher</legend>
+    </fieldset>
+
+    <p class="form__note" id="board-note" role="status" aria-live="polite"></p>
+    <ol class="owner-list" id="list"></ol>
+  </section>
+
+</main>
+
+<template id="item-tpl">
+  <li class="demande">
+    <div class="demande__main">
+      <div class="demande__top">
+        <span class="label demande__date"></span>
+        <span class="demande__type"></span>
+      </div>
+      <h2 class="demande__nom"></h2>
+      <p class="demande__contact">
+        <a class="demande__email"></a>
+        <a class="demande__tel"></a>
+      </p>
+      <p class="demande__message"></p>
+    </div>
+    <div class="demande__side">
+      <label class="field">Statut
+        <select class="demande__statut"></select>
+      </label>
+      <label class="field">Note privée
+        <textarea class="demande__note" rows="3" placeholder="Rappelé le…, visite prévue le…"></textarea>
+      </label>
+      <button class="btn btn--ghost demande__save" type="button">Enregistrer la note</button>
+    </div>
+  </li>
+</template>
+
+<script src="scripts/proprietaire.js" defer></script>
+</body>
+</html>

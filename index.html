@@ -208,7 +208,9 @@
         <p>Nous vendons la maison nous-mêmes, sans agence. Dites-nous quand vous souhaitez passer, ou demandez le dossier complet : nous vous répondons personnellement.</p>
         <p class="muted">Vous pouvez aussi écrire directement à <a href="mailto:sandiade@yopmail.com">sandiade@yopmail.com</a>.</p>
       </div>
-      <form class="form" id="visit-form" action="mailto:sandiade@yopmail.com" method="post" enctype="text/plain">
+      <form class="form" id="visit-form" action="/api/visite" method="post" novalidate>
+        <!-- Champ piège anti-robots, invisible pour les visiteurs -->
+        <label class="trap" aria-hidden="true">Site web<input name="site" tabindex="-1" autocomplete="off"></label>
         <label class="field">Nom
           <input name="nom" autocomplete="name" placeholder="Votre nom" required>
         </label>
@@ -228,7 +230,7 @@
           <textarea name="message" rows="4" placeholder="Vos disponibilités, vos questions…"></textarea>
         </label>
         <button class="btn btn--primary" type="submit">Organiser une visite</button>
-        <p class="form__note" id="form-note">Le bouton ouvre votre messagerie avec votre demande déjà rédigée.</p>
+        <p class="form__note" id="form-note" role="status" aria-live="polite">Vos coordonnées servent uniquement à vous recontacter pour la vente de la maison.</p>
       </form>
     </div>
   </section>
