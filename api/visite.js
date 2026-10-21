@@ -21,7 +21,8 @@ export async function POST(request) {
 
   // Anti-spam : champ invisible rempli, ou formulaire envoyé moins de 2 secondes après l’ouverture de la page.
   // La durée est mesurée par le navigateur (pas de comparaison entre deux horloges).
-  const elapsed = Number(body.ms);
+  // Sans mesure (ancienne version du script en cache), on accepte : le champ piège filtre déjà les robots.
+  const elapsed = body.ms === undefined ? Infinity : Number(body.ms);
   if (clean(body.site, 200)) {
     console.warn('visite: ignorée (champ piège rempli)');
     return json({ ok: true }); // on ne dit rien au robot
