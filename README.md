@@ -11,6 +11,9 @@ Hébergé sur Vercel, projet `maison-hubacs` (équipe « Projets de Maël »).
 - Le formulaire du site envoie la demande à `POST /api/visite`, qui l'enregistre dans un
   **Blob store Vercel privé** (un fichier JSON par demande, `demandes/<id>.json`).
   Anti-spam : champ piège invisible + délai minimum de 3 s.
+- Chaque nouvelle demande déclenche une **alerte e-mail** au propriétaire via l’API transactionnelle
+  Brevo (`lib/alerte.js`). « Répondre » dans la messagerie écrit directement au visiteur.
+  Si Brevo échoue, la demande reste enregistrée (l’erreur apparaît dans les logs Vercel).
 - **`/proprietaire`** : espace protégé par un code d'accès. On y voit toutes les demandes,
   on change leur statut (nouvelle, recontactée, visite planifiée, terminée, archivée)
   et on ajoute une note privée. La page n'est pas indexée par les moteurs de recherche.
@@ -21,6 +24,9 @@ Hébergé sur Vercel, projet `maison-hubacs` (équipe « Projets de Maël »).
 |---|---|
 | `OWNER_CODE` (variable d'environnement) | Le code d'accès. Le changer déconnecte toutes les sessions. |
 | Blob store **privé** `maison-hubacs-demandes` relié au projet | Crée `BLOB_STORE_ID` ; le SDK s’authentifie seul via OIDC (pas de token à gérer). |
+| `BREVO_API_KEY` (sensitive) | Active l’alerte e-mail à chaque nouvelle demande. Sans elle, pas d’alerte, le reste fonctionne. |
+| `ALERT_EMAIL` (facultatif) | Destinataire des alertes. Par défaut : l’adresse de l’expéditeur Brevo. |
+| `BREVO_SENDER_EMAIL` (facultatif) | Expéditeur, doit être validé dans Brevo. Par défaut : l’expéditeur validé du compte. |
 
 Pour créer le Blob store : Vercel → projet `maison-hubacs` → Storage → Create → Blob,
 accès **Private**, région Paris (cdg1), puis le connecter au projet. Redéployer ensuite.
