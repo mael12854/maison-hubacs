@@ -1,0 +1,48 @@
+/* Maison des Hubacs : tokens de la charte de marque v1.0 */
+:root {
+  /* Couleurs */
+  --chaux: #F4F0E8;      /* fond principal */
+  --chaux-clair: #FBF9F4;/* cartes */
+  --pierre: #E4DCCD;     /* fonds secondaires */
+  --filet: #D9D0BF;      /* séparateurs */
+  --gravier: #A89F90;    /* bordures de champs */
+  --garrigue: #7D8463;   /* surtitres */
+  --pin: #2F3B2A;        /* titres, logo, bandeaux */
+  --encre: #23251F;      /* texte */
+  --encre-douce: #4A4E3F;/* texte secondaire */
+  --crepi: #C99A82;      /* accent décoratif */
+  --tuile: #A3532F;      /* CTA, liens */
+  --tuile-hover: #8A4426;
+
+  /* Typographie (Google Fonts) */
+  --font-titre: 'Cormorant Garamond', Georgia, serif; /* 400, 400 italic */
+  --font-texte: 'Instrument Sans', system-ui, sans-serif; /* 400, 500, 600 */
+  --fs-display: clamp(64px, 12vw, 168px);
+  --fs-h1: clamp(40px, 5vw, 68px);
+  --fs-h2: clamp(30px, 3.5vw, 44px);
+  --fs-h3: 28px;
+  --fs-lead: 20px;
+  --fs-body: 17px;
+  --fs-small: 14px;
+  --fs-label: 12px;  /* capitales, letter-spacing .14em */
+  --lh-titre: 1.05;
+  --lh-texte: 1.65;
+
+  /* Espacements (base 8) */
+  --space-1: 8px; --space-2: 16px; --space-3: 24px;
+  --space-4: 32px; --space-6: 48px; --space-8: 64px; --space-12: 96px;
+  --container: 1240px;
+  --gutter: clamp(20px, 4vw, 56px);
+
+  /* Formes */
+  --radius: 0;          /* angles droits partout */
+  --radius-pill: 999px; /* pastilles uniquement */
+  --border: 1px solid var(--filet);
+  --shadow: none;
+
+  /* Mouvement */
+  --transition: 200ms ease-out;
+
+  /* Contact */
+  --contact-email: "sandiade@yopmail.com";
+}
