@@ -20,9 +20,15 @@ export async function POST(request) {
   }
 
   // Anti-spam : champ invisible rempli, ou formulaire envoyé en moins de 3 secondes.
-  const elapsed = Date.now() - Number(body.t || 0);
-  if (clean(body.site, 200) || !(elapsed > 3000)) {
+  // La durée est mesurée par le navigateur (pas de comparaison entre deux horloges).
+  const elapsed = Number(body.ms);
+  if (clean(body.site, 200)) {
+    console.warn('visite: ignorée (champ piège rempli)');
     return json({ ok: true }); // on ne dit rien au robot
+  }
+  if (!(elapsed >= 3000)) {
+    console.warn(`visite: ignorée (envoyée trop vite : ${body.ms} ms)`);
+    return json({ ok: true });
   }
 
   const demande = {
@@ -48,9 +54,12 @@ export async function POST(request) {
     return json({ error: 'Enregistrement impossible pour le moment.' }, 503);
   }
 
+  console.log(`visite: enregistrée ${demande.id}`);
+
   // La demande est enregistrée : un échec de l'alerte ne doit pas faire échouer l'envoi.
   try {
-    await envoyerAlerte(demande, request);
+    const r = await envoyerAlerte(demande, request);
+    console.log(r.envoye ? `alerte: acceptée par Brevo (${r.messageId}) pour ${r.to}` : `alerte: non envoyée (${r.raison})`);
   } catch (err) {
     console.error('visite: alerte e-mail non envoyée', err);
   }

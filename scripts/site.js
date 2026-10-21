@@ -28,7 +28,7 @@
     var d = {
       nom: f.get('nom'), email: f.get('email'), telephone: f.get('telephone'),
       demande: f.get('demande') || 'Visite sur place', message: f.get('message'),
-      site: f.get('site'), t: openedAt
+      site: f.get('site'), ms: Date.now() - openedAt
     };
 
     button.disabled = true;
