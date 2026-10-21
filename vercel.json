@@ -1,5 +1,6 @@
 {
   "cleanUrls": true,
+  "regions": ["cdg1"],
   "headers": [
     {
       "source": "/(.*)",
