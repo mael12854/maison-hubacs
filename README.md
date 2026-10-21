@@ -20,7 +20,7 @@ Hébergé sur Vercel, projet `maison-hubacs` (équipe « Projets de Maël »).
 | Réglage | Rôle |
 |---|---|
 | `OWNER_CODE` (variable d'environnement) | Le code d'accès. Le changer déconnecte toutes les sessions. |
-| Blob store **privé** relié au projet | Crée automatiquement `BLOB_READ_WRITE_TOKEN`. |
+| Blob store **privé** `maison-hubacs-demandes` relié au projet | Crée `BLOB_STORE_ID` ; le SDK s’authentifie seul via OIDC (pas de token à gérer). |
 
 Pour créer le Blob store : Vercel → projet `maison-hubacs` → Storage → Create → Blob,
 accès **Private**, région Paris (cdg1), puis le connecter au projet. Redéployer ensuite.
