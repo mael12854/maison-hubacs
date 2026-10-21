@@ -41,7 +41,11 @@
     })
       .then(function (res) {
         return res.json().catch(function () { return {}; }).then(function (data) {
-          if (!res.ok) throw new Error(data.error || 'Erreur');
+          if (!res.ok) {
+            var e = new Error(data.error || 'Erreur');
+            e.status = res.status;
+            throw e;
+          }
         });
       })
       .then(function () {
@@ -51,6 +55,7 @@
       .catch(function (err) {
         note.className = 'form__note is-error';
         note.textContent = (err.message && err.message !== 'Erreur' && err.message !== 'Failed to fetch' ? err.message + ' ' : 'L’envoi n’a pas abouti. ') ;
+        if (err.status === 429) return; // envoyé trop vite : il suffit de renvoyer
         var a = document.createElement('a');
         a.href = mailto(d);
         a.textContent = 'Envoyer la demande par e-mail';

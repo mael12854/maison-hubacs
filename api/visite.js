@@ -19,16 +19,18 @@ export async function POST(request) {
     return json({ error: 'Requête invalide' }, 400);
   }
 
-  // Anti-spam : champ invisible rempli, ou formulaire envoyé en moins de 3 secondes.
+  // Anti-spam : champ invisible rempli, ou formulaire envoyé moins de 2 secondes après l’ouverture de la page.
   // La durée est mesurée par le navigateur (pas de comparaison entre deux horloges).
   const elapsed = Number(body.ms);
   if (clean(body.site, 200)) {
     console.warn('visite: ignorée (champ piège rempli)');
     return json({ ok: true }); // on ne dit rien au robot
   }
-  if (!(elapsed >= 3000)) {
-    console.warn(`visite: ignorée (envoyée trop vite : ${body.ms} ms)`);
-    return json({ ok: true });
+  if (!(elapsed >= 2000)) {
+    // Un vrai visiteur peut aller vite (remplissage automatique) : on lui demande de renvoyer
+    // au lieu de faire semblant d'avoir reçu sa demande.
+    console.warn(`visite: refusée (envoyée trop vite : ${body.ms} ms)`);
+    return json({ error: 'Un instant, puis cliquez à nouveau sur « Organiser une visite ».' }, 429);
   }
 
   const demande = {

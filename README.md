@@ -10,7 +10,8 @@ Hébergé sur Vercel, projet `maison-hubacs` (équipe « Projets de Maël »).
 
 - Le formulaire du site envoie la demande à `POST /api/visite`, qui l'enregistre dans un
   **Blob store Vercel privé** (un fichier JSON par demande, `demandes/<id>.json`).
-  Anti-spam : champ piège invisible + délai minimum de 3 s.
+  Anti-spam : champ piège invisible (ignoré sans rien dire) + délai minimum de 2 s depuis l’ouverture
+  de la page (le visiteur est invité à renvoyer).
 - Chaque nouvelle demande déclenche une **alerte e-mail** au propriétaire via l’API transactionnelle
   Brevo (`lib/alerte.js`). « Répondre » dans la messagerie écrit directement au visiteur.
   Si Brevo échoue, la demande reste enregistrée (l’erreur apparaît dans les logs Vercel).
