@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F4F0E8;color:#23251F;font-family:'Instrument Sans',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#A3532F;text-decoration:underline;text-underline-offset:3px}
+a:hover{color:#2F3B2A}
+*{box-sizing:border-box}
+</style>
+</helmet>
+
+<div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,56px)">
+
+<header data-screen-label="Couverture" style="min-height:88vh;display:grid;grid-template-rows:auto 1fr auto;padding:40px 0 48px;border-bottom:1px solid #D9D0BF">
+  <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#5E6150">
+    <span>Charte de marque, v1.0</span><span>Octobre 2026</span>
+  </div>
+  <div style="display:flex;flex-direction:column;justify-content:center;gap:28px;padding:64px 0">
+    <div style="width:72px;height:72px;border:1px solid #2F3B2A;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:38px;font-style:italic;color:#2F3B2A">{{ initial }}</div>
+    <h1 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(64px,12vw,168px);line-height:.92;letter-spacing:-.02em;color:#2F3B2A">{{ brandName }}</h1>
+    <p style="margin:0;max-width:580px;font-family:'Cormorant Garamond',serif;font-size:clamp(22px,2.4vw,30px);line-height:1.3;font-style:italic;color:#4A4E3F;text-wrap:pretty">Une grande maison provençale face au massif boisé. 480, chemin des Hubacs, Solliès-Toucas.</p>
+  </div>
+  <nav style="display:flex;flex-wrap:wrap;gap:10px 28px;font-size:13px">
+    <a href="#nom" style="color:#4A4E3F;text-decoration:none">01 Nom & récit</a>
+    <a href="#logo" style="color:#4A4E3F;text-decoration:none">02 Logo</a>
+    <a href="#couleurs" style="color:#4A4E3F;text-decoration:none">03 Couleurs</a>
+    <a href="#typo" style="color:#4A4E3F;text-decoration:none">04 Typographie</a>
+    <a href="#ton" style="color:#4A4E3F;text-decoration:none">05 Ton & vocabulaire</a>
+    <a href="#photo" style="color:#4A4E3F;text-decoration:none">06 Photographie</a>
+    <a href="#ui" style="color:#4A4E3F;text-decoration:none">07 Composants</a>
+    <a href="#tokens" style="color:#4A4E3F;text-decoration:none">08 Tokens CSS</a>
+    <a href="#pages" style="color:#4A4E3F;text-decoration:none">09 Pages</a>
+  </nav>
+</header>
+
+<section id="nom" data-screen-label="01 Nom" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:48px;padding:96px 0;border-bottom:1px solid #D9D0BF">
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#A3532F">01</span>
+    <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(40px,5vw,64px);line-height:1;color:#2F3B2A">Nom & récit</h2>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:24px;font-size:17px;line-height:1.65;max-width:660px">
+    <p style="margin:0;text-wrap:pretty">La marque prend le nom du chemin : <strong style="font-weight:600">{{ brandName }}</strong>. En provençal, l’<em>ubac</em> est le versant ombragé d’une colline, celui où les pins restent verts et où l’on trouve de la fraîcheur en été. Le nom vient du lieu et se retient facilement, en France comme à l’étranger.</p>
+    <p style="margin:0;text-wrap:pretty">Le nom <em>Sandiade</em>, gravé sur le pilier du portail, reste un détail qu’on découvre en arrivant. Il peut apparaître dans le récit ou en légende de la photo du portail, jamais dans le logo.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:#D9D0BF;border:1px solid #D9D0BF;margin-top:8px">
+      <sc-for list="{{ assets }}" as="a" hint-placeholder-count="8">
+        <div style="background:#F4F0E8;padding:18px 16px;display:flex;flex-direction:column;gap:6px">
+          <span style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#7D8463">{{ a.k }}</span>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#2F3B2A">{{ a.v }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <p style="margin:0;font-size:13px;color:#5E6150">Les huit atouts à mettre en avant, dans cet ordre de priorité.</p>
+  </div>
+</section>
+
+<section id="logo" data-screen-label="02 Logo" style="padding:96px 0;border-bottom:1px solid #D9D0BF;display:flex;flex-direction:column;gap:48px">
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#A3532F">02</span>
+    <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(40px,5vw,64px);line-height:1;color:#2F3B2A">Logo</h2>
+    <p style="margin:0;max-width:620px;font-size:17px;line-height:1.65;text-wrap:pretty">Un logotype typographique, sans pictogramme. Le monogramme, une initiale italique dans un cercle fin comme un tampon de cire, sert aux petits formats : favicon, filigrane photo, en-tête de dossier PDF.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:16px">
+    <div style="background:#FBF9F4;border:1px solid #E4DCCD;aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;position:relative">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:56px;color:#2F3B2A;letter-spacing:-.01em">{{ brandName }}</span>
+      <span style="font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:#4A4E3F">Solliès-Toucas · Var</span>
+      <span style="position:absolute;left:16px;bottom:12px;font-size:11px;color:#7D8463">Principal, Pin sur Chaux</span>
+    </div>
+    <div style="background:#2F3B2A;aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;position:relative">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:56px;color:#F4F0E8;letter-spacing:-.01em">{{ brandName }}</span>
+      <span style="font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:#E4DCCD">Solliès-Toucas · Var</span>
+      <span style="position:absolute;left:16px;bottom:12px;font-size:11px;color:#B9BC9F">Inversé, Chaux sur Pin</span>
+    </div>
+    <div style="background:#E4DCCD;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;gap:28px;position:relative">
+      <div style="width:120px;height:120px;border:1.5px solid #2F3B2A;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:68px;font-style:italic;color:#2F3B2A">{{ initial }}</div>
+      <div style="width:56px;height:56px;border:1px solid #A3532F;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:32px;font-style:italic;color:#A3532F">{{ initial }}</div>
+      <div style="width:28px;height:28px;background:#2F3B2A;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:#F4F0E8">{{ initial }}</div>
+      <span style="position:absolute;left:16px;bottom:12px;font-size:11px;color:#4A4E3F">Monogramme, 3 tailles</span>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:32px;font-size:15px;line-height:1.6">
+    <div style="display:flex;flex-direction:column;gap:8px"><strong style="font-weight:600">Zone de protection</strong><span style="color:#4A4E3F">Laisser autour du logo un espace libre au moins égal à la hauteur de la lettre « H ».</span></div>
+    <div style="display:flex;flex-direction:column;gap:8px"><strong style="font-weight:600">Taille minimale</strong><span style="color:#4A4E3F">Logotype : 120 px de large à l’écran. En dessous, utiliser le monogramme (16 px minimum).</span></div>
+    <div style="display:flex;flex-direction:column;gap:8px"><strong style="font-weight:600">À ne pas faire</strong><span style="color:#4A4E3F">Pas d’ombre, de contour ni de dégradé, pas d’étirement. Pas de lavande, de cigale ou d’olivier dessinés à côté.</span></div>
+  </div>
+</section>
+
+<section id="couleurs" data-screen-label="03 Couleurs" style="padding:96px 0;border-bottom:1px solid #D9D0BF;display:flex;flex-direction:column;gap:48px">
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#A3532F">03</span>
+    <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(40px,5vw,64px);line-height:1;color:#2F3B2A">Couleurs</h2>
+    <p style="margin:0;max-width:620px;font-size:17px;line-height:1.65;text-wrap:pretty">Toutes les couleurs sont tirées des photos : le mur blanc chaulé, le gravier de l’allée, les pins du massif, le crépi rosé de la façade et le ciel du Var. La Chaux occupe 70 % de la surface, le Pin 20 %, les accents 10 % au plus.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:16px">
+    <sc-for list="{{ colors }}" as="c" hint-placeholder-count="8">
+      <div style="display:flex;flex-direction:column;border:1px solid #E4DCCD;background:#FBF9F4">
+        <div style="height:140px;background:{{ c.hex }}"></div>
+        <div style="padding:14px 16px 16px;display:flex;flex-direction:column;gap:4px">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#2F3B2A">{{ c.name }}</span>
+          <span style="font-size:12px;font-family:ui-monospace,Menlo,monospace;color:#4A4E3F">{{ c.hex }} · {{ c.token }}</span>
+          <span style="font-size:13px;color:#5E6150;line-height:1.5">{{ c.use }}</span>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px">
+    <div style="background:#F4F0E8;border:1px solid #D9D0BF;padding:24px;display:flex;flex-direction:column;gap:6px"><span style="font-size:28px;font-family:'Cormorant Garamond',serif;color:#23251F">Encre sur Chaux</span><span style="font-size:13px;color:#4A4E3F">Texte courant · 14,9:1</span></div>
+    <div style="background:#2F3B2A;padding:24px;display:flex;flex-direction:column;gap:6px"><span style="font-size:28px;font-family:'Cormorant Garamond',serif;color:#F4F0E8">Chaux sur Pin</span><span style="font-size:13px;color:#E4DCCD">Bandeaux, pied de page · 11,0:1</span></div>
+    <div style="background:#A3532F;padding:24px;display:flex;flex-direction:column;gap:6px"><span style="font-size:28px;font-family:'Cormorant Garamond',serif;color:#FBF9F4">Chaux sur Tuile</span><span style="font-size:13px;color:#FBF9F4">Bouton principal uniquement · 5,0:1</span></div>
+  </div>
+</section>
+
+<section id="typo" data-screen-label="04 Typographie" style="padding:96px 0;border-bottom:1px solid #D9D0BF;display:flex;flex-direction:column;gap:48px">
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#A3532F">04</span>
+    <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(40px,5vw,64px);line-height:1;color:#2F3B2A">Typographie</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:16px">
+    <div style="background:#FBF9F4;border:1px solid #E4DCCD;padding:32px;display:flex;flex-direction:column;gap:16px">
+      <span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#7D8463">Titres · Cormorant Garamond</span>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:96px;line-height:1;color:#2F3B2A">Aa <em>Aa</em></span>
+      <span style="font-size:14px;line-height:1.6;color:#4A4E3F">Regular 400 et Italique. Titres, citations, chiffres clés. Jamais en dessous de 22 px, jamais en gras.</span>
+    </div>
+    <div style="background:#FBF9F4;border:1px solid #E4DCCD;padding:32px;display:flex;flex-direction:column;gap:16px">
+      <span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#7D8463">Texte · Instrument Sans</span>
+      <span style="font-family:'Instrument Sans',sans-serif;font-size:96px;line-height:1;color:#2F3B2A">Aa</span>
+      <span style="font-size:14px;line-height:1.6;color:#4A4E3F">400, 500 et 600. Texte courant, interface, surtitres en capitales espacées (0,14 em).</span>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;border-top:1px solid #D9D0BF">
+    <sc-for list="{{ typeScale }}" as="t" hint-placeholder-count="6">
+      <div style="display:grid;grid-template-columns:minmax(110px,160px) minmax(0,1fr);gap:24px;align-items:baseline;padding:20px 0;border-bottom:1px solid #E4DCCD">
+        <span style="font-size:12px;font-family:ui-monospace,Menlo,monospace;color:#5E6150">{{ t.label }}</span>
+        <span style="font-family:{{ t.family }};font-size:{{ t.size }};font-style:{{ t.style }};letter-spacing:{{ t.ls }};text-transform:{{ t.tt }};line-height:1.15;color:#2F3B2A">{{ t.sample }}</span>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section id="ton" data-screen-label="05 Ton" style="padding:96px 0;border-bottom:1px solid #D9D0BF;display:flex;flex-direction:column;gap:48px">
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#A3532F">05</span>
+    <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(40px,5vw,64px);line-height:1;color:#2F3B2A">Ton & vocabulaire</h2>
+    <p style="margin:0;max-width:620px;font-size:17px;line-height:1.65;text-wrap:pretty">On écrit comme le propriétaire qui fait visiter, pas comme une agence. On décrit ce qu’on voit, ce qu’on entend, ce qu’on fait dans la maison, et on laisse l’acheteur s’y projeter.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:32px">
+    <sc-for list="{{ principles }}" as="p" hint-placeholder-count="3">
+      <div style="display:flex;flex-direction:column;gap:10px;border-top:1px solid #2F3B2A;padding-top:18px">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:28px;color:#2F3B2A">{{ p.t }}</span>
+        <span style="font-size:15px;line-height:1.6;color:#4A4E3F">{{ p.d }}</span>
+      </div>
+    </sc-for>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:16px">
+    <div style="background:#FBF9F4;border:1px solid #E4DCCD;padding:28px;display:flex;flex-direction:column;gap:12px">
+      <span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#2F3B2A">Oui</span>
+      <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:24px;line-height:1.35;color:#23251F;text-wrap:pretty">« Le soir, on allume le barbecue près du poolhouse et on finit la partie de boules pendant que le massif devient bleu. L’hiver, on se retrouve autour de la cheminée. »</p>
+    </div>
+    <div style="background:#FBF9F4;border:1px solid #E4DCCD;padding:28px;display:flex;flex-direction:column;gap:12px">
+      <span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#A3532F">Non</span>
+      <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:24px;line-height:1.35;color:#5E6150;text-decoration:line-through;text-decoration-color:#C99A82;text-wrap:pretty">« Coup de cœur assuré ! Rare sur le secteur, cette villa d’exception aux prestations haut de gamme saura vous séduire. »</p>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:32px">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#2F3B2A">Mots à employer</span>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <sc-for list="{{ wordsYes }}" as="w" hint-placeholder-count="12"><span style="padding:6px 12px;border:1px solid #7D8463;border-radius:999px;font-size:14px;color:#2F3B2A">{{ w }}</span></sc-for>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#A3532F">Mots à éviter</span>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <sc-for list="{{ wordsNo }}" as="w" hint-placeholder-count="10"><span style="padding:6px 12px;border:1px dashed #C99A82;border-radius:999px;font-size:14px;color:#5E6150">{{ w }}</span></sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="photo" data-screen-label="06 Photographie" style="padding:96px 0;border-bottom:1px solid #D9D0BF;display:flex;flex-direction:column;gap:48px">
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#A3532F">06</span>
+    <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(40px,5vw,64px);line-height:1;color:#2F3B2A">Photographie</h2>
+    <p style="margin:0;max-width:620px;font-size:17px;line-height:1.65;text-wrap:pretty">Lumière naturelle, de préférence le matin ou en fin d’après-midi. Couleurs fidèles : pas de ciel saturé, pas de HDR, pas de grand-angle déformant. Personne à l’image, aucune voiture, aucune poubelle.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:16px">
+    <figure style="margin:0;display:flex;flex-direction:column;gap:10px">
+      <img src="assets/portail.png" alt="Allée et portail" style="width:100%;aspect-ratio:2/1;object-fit:cover;object-position:60% 50%;display:block"></img>
+      <figcaption style="font-size:13px;color:#4A4E3F;line-height:1.5">Référence actuelle : l’allée et le portail. Le cadrage et la lumière fonctionnent. À refaire sans la voiture au premier plan et en recadrant le poteau à gauche.</figcaption>
+    </figure>
+    <figure style="margin:0;display:flex;flex-direction:column;gap:10px">
+      <img src="assets/satellite.png" alt="Vue aérienne" style="width:100%;aspect-ratio:2/1;object-fit:cover;display:block;filter:saturate(.8)"></img>
+      <figcaption style="font-size:13px;color:#4A4E3F;line-height:1.5">Vue aérienne : à remplacer par une prise de vue au drone qui montre le terrain, la piscine et le massif en arrière-plan.</figcaption>
+    </figure>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#2F3B2A">Liste des prises de vue à réaliser</span>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px">
+      <sc-for list="{{ shots }}" as="s" hint-placeholder-count="10">
+        <div style="aspect-ratio:4/3;background:repeating-linear-gradient(135deg,#E9E2D5 0 8px,#E4DCCD 8px 16px);display:flex;flex-direction:column;justify-content:flex-end;padding:12px;gap:4px">
+          <span style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#2F3B2A">{{ s.n }}</span>
+          <span style="font-size:12px;color:#4A4E3F;line-height:1.4">{{ s.d }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="ui" data-screen-label="07 Composants" style="padding:96px 0;border-bottom:1px solid #D9D0BF;display:flex;flex-direction:column;gap:48px">
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#A3532F">07</span>
+    <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(40px,5vw,64px);line-height:1;color:#2F3B2A">Composants web</h2>
+    <p style="margin:0;max-width:620px;font-size:17px;line-height:1.65;text-wrap:pretty">Angles droits, filets de 1 px, aucune ombre portée. Les arrondis sont réservés aux pastilles. Les transitions durent 200 ms en ease-out.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:16px">
+    <div style="background:#FBF9F4;border:1px solid #E4DCCD;padding:28px;display:flex;flex-direction:column;gap:20px">
+      <span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#7D8463">Boutons</span>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+        <button style="font-family:'Instrument Sans',sans-serif;font-size:15px;font-weight:500;padding:14px 26px;background:#A3532F;color:#FBF9F4;border:none;cursor:pointer;transition:background .2s" style-hover="background:#8A4426">Organiser une visite</button>
+        <button style="font-family:'Instrument Sans',sans-serif;font-size:15px;font-weight:500;padding:13px 25px;background:transparent;color:#2F3B2A;border:1px solid #2F3B2A;cursor:pointer;transition:all .2s" style-hover="background:#2F3B2A;color:#F4F0E8">Télécharger le dossier</button>
+        <a href="#ui" style="font-size:15px;color:#2F3B2A;text-decoration:none;border-bottom:1px solid #A3532F;padding-bottom:2px">Voir le plan →</a>
+      </div>
+      <span style="font-size:13px;color:#5E6150;line-height:1.5">Un seul bouton Tuile par écran : celui de la prise de contact.</span>
+    </div>
+    <div style="background:#FBF9F4;border:1px solid #E4DCCD;padding:28px;display:flex;flex-direction:column;gap:20px">
+      <span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#7D8463">Fiche chiffres</span>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:#D9D0BF;border:1px solid #D9D0BF">
+        <sc-for list="{{ facts }}" as="f" hint-placeholder-count="6">
+          <div style="background:#FBF9F4;padding:14px 12px;display:flex;flex-direction:column;gap:2px">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:30px;line-height:1;color:#2F3B2A">{{ f.v }}</span>
+            <span style="font-size:12px;color:#4A4E3F">{{ f.k }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <span style="font-size:13px;color:#5E6150;line-height:1.5">Valeurs à compléter avec les chiffres du diagnostic.</span>
+    </div>
+    <div style="background:#FBF9F4;border:1px solid #E4DCCD;padding:28px;display:flex;flex-direction:column;gap:16px">
+      <span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#7D8463">Formulaire</span>
+      <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;color:#4A4E3F">Nom<input placeholder="Votre nom" style="font-family:'Instrument Sans',sans-serif;font-size:15px;padding:12px 0;border:none;border-bottom:1px solid #A89F90;background:transparent;outline:none;color:#23251F" style-focus="border-bottom-color:#2F3B2A"></input></label>
+      <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;color:#4A4E3F">E-mail<input placeholder="vous@exemple.fr" style="font-family:'Instrument Sans',sans-serif;font-size:15px;padding:12px 0;border:none;border-bottom:1px solid #A89F90;background:transparent;outline:none;color:#23251F" style-focus="border-bottom-color:#2F3B2A"></input></label>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <span style="padding:6px 12px;border:1px solid #2F3B2A;background:#2F3B2A;color:#F4F0E8;border-radius:999px;font-size:13px">Visite sur place</span>
+        <span style="padding:6px 12px;border:1px solid #A89F90;border-radius:999px;font-size:13px;color:#4A4E3F">Visite vidéo</span>
+        <span style="padding:6px 12px;border:1px solid #A89F90;border-radius:999px;font-size:13px;color:#4A4E3F">Dossier complet</span>
+      </div>
+    </div>
+    <div style="background:#FBF9F4;border:1px solid #E4DCCD;padding:28px;display:flex;flex-direction:column;gap:16px">
+      <span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#7D8463">Carte « espace »</span>
+      <div style="aspect-ratio:3/2;background:repeating-linear-gradient(135deg,#E9E2D5 0 8px,#E4DCCD 8px 16px);display:flex;align-items:flex-end;padding:10px"><span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#4A4E3F">photo : séjour et cheminée</span></div>
+      <span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#A3532F">Intérieur</span>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:28px;line-height:1.1;color:#2F3B2A">Le séjour et sa cheminée</span>
+      <span style="font-size:14px;line-height:1.6;color:#4A4E3F">Une grande pièce de vie ouverte sur la terrasse, avec un vrai feu de bois pour l’hiver.</span>
+    </div>
+  </div>
+</section>
+
+<section id="tokens" data-screen-label="08 Tokens" style="padding:96px 0;border-bottom:1px solid #D9D0BF;display:flex;flex-direction:column;gap:32px">
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#A3532F">08</span>
+    <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(40px,5vw,64px);line-height:1;color:#2F3B2A">Tokens CSS</h2>
+    <p style="margin:0;max-width:620px;font-size:17px;line-height:1.65;text-wrap:pretty">À coller dans le projet Claude Code (par exemple <code style="font-family:ui-monospace,Menlo,monospace;font-size:14px">styles/tokens.css</code>). Toutes les valeurs de cette charte s’y trouvent.</p>
+  </div>
+  <div style="position:relative;background:#23251F;color:#E4DCCD">
+    <button onClick="{{ copyTokens }}" style="position:absolute;top:14px;right:14px;font-family:'Instrument Sans',sans-serif;font-size:13px;padding:8px 14px;background:transparent;color:#F4F0E8;border:1px solid #5E6150;cursor:pointer" style-hover="border-color:#F4F0E8">{{ copyLabel }}</button>
+    <pre style="margin:0;padding:28px;overflow:auto;font-family:ui-monospace,Menlo,monospace;font-size:13px;line-height:1.7;max-height:560px">{{ tokens }}</pre>
+  </div>
+</section>
+
+<section id="pages" data-screen-label="09 Pages" style="padding:96px 0;display:flex;flex-direction:column;gap:48px">
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#A3532F">09</span>
+    <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(40px,5vw,64px);line-height:1;color:#2F3B2A">Exemples de pages</h2>
+    <p style="margin:0;max-width:620px;font-size:17px;line-height:1.65;text-wrap:pretty">Le site tient sur une seule page longue : accueil, la maison, l’extérieur, le lieu, la visite.</p>
+  </div>
+
+  <div style="border:1px solid #D9D0BF;background:#F4F0E8;overflow:hidden">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:20px clamp(16px,3vw,40px);border-bottom:1px solid #E4DCCD">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:26px;color:#2F3B2A">{{ brandName }}</span>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;align-items:center;font-size:14px;color:#4A4E3F"><span>La maison</span><span>L’extérieur</span><span>Le lieu</span><span style="padding:9px 16px;background:#A3532F;color:#FBF9F4">Visiter</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr))">
+      <div style="padding:clamp(28px,5vw,72px);display:flex;flex-direction:column;justify-content:flex-end;gap:20px">
+        <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#7D8463">À vendre · Solliès-Toucas, Var</span>
+        <h3 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(40px,5vw,68px);line-height:1;color:#2F3B2A;text-wrap:pretty">Une grande maison <em>face au massif</em></h3>
+        <p style="margin:0;font-size:16px;line-height:1.65;color:#4A4E3F;max-width:440px;text-wrap:pretty">Piscine et poolhouse, grand jardin, boulodrome, vue dégagée sur le massif. À vingt minutes de Toulon.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap"><span style="padding:14px 24px;background:#A3532F;color:#FBF9F4;font-size:15px;font-weight:500">Organiser une visite</span><span style="padding:13px 23px;border:1px solid #2F3B2A;color:#2F3B2A;font-size:15px;font-weight:500">Voir la maison</span></div>
+      </div>
+      <div style="min-height:420px;background:repeating-linear-gradient(135deg,#E9E2D5 0 8px,#E4DCCD 8px 16px);display:flex;align-items:flex-end;padding:14px"><span style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#4A4E3F">photo héro : façade et piscine, lumière de fin de journée</span></div>
+    </div>
+    <div style="background:#2F3B2A;color:#F4F0E8;padding:clamp(28px,5vw,64px) clamp(16px,3vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:40px;align-items:center">
+      <p style="margin:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(26px,3vw,38px);line-height:1.25;text-wrap:pretty">« On arrive par l’allée de gravier, on passe le portail, et la ville est déjà loin. »</p>
+      <div style="display:flex;flex-direction:column;gap:12px;font-size:15px;line-height:1.6;color:#E4DCCD"><span>Bandeau Pin : citations, transitions entre chapitres.</span><span>Une citation par bandeau, sans guillemets anglais.</span></div>
+    </div>
+    <div style="padding:clamp(28px,5vw,64px) clamp(16px,3vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:40px">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#A3532F">Le lieu</span>
+        <h3 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(34px,4vw,52px);line-height:1.05;color:#2F3B2A">480, chemin des Hubacs</h3>
+        <p style="margin:0;font-size:16px;line-height:1.65;color:#4A4E3F;text-wrap:pretty">Au bout d’un chemin tranquille, entre les collines boisées de Solliès-Toucas et la vallée du Gapeau. Pour une visite, écrivez à <a href="{{ mailto }}">{{ email }}</a>.</p>
+        <a href="#pages" style="font-size:15px;color:#2F3B2A;text-decoration:none;border-bottom:1px solid #A3532F;padding-bottom:2px;align-self:flex-start">Organiser une visite →</a>
+      </div>
+      <img src="assets/plan.png" alt="Plan d’accès" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;filter:grayscale(.6) sepia(.25);border:1px solid #E4DCCD"></img>
+    </div>
+    <div style="border-top:1px solid #E4DCCD;padding:24px clamp(16px,3vw,40px);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:#5E6150">
+      <span>{{ brandName }} · Solliès-Toucas, Var</span><a href="{{ mailto }}" style="color:#2F3B2A;text-decoration:none;border-bottom:1px solid #A3532F">{{ email }}</a><span>Vente de particulier à particulier</span>
+    </div>
+  </div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;brandName&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Maison des Hubacs&quot;,&quot;Les Hubacs&quot;,&quot;La Sandiade&quot;],&quot;default&quot;:&quot;Maison des Hubacs&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { copied: false };
+  renderVals() {
+    const brandName = this.props.brandName ?? 'Maison des Hubacs';
+    const initial = brandName.replace(/^(Maison des|Les|La|Le)\s+/i, '').replace(/^L['’]/, '').charAt(0).toUpperCase();
+    const email = 'sandiade@yopmail.com';
+    const colors = [
+      { name: 'Chaux', hex: '#F4F0E8', token: '--chaux', use: 'Fond principal, le mur blanc chaulé de l’allée.' },
+      { name: 'Pierre', hex: '#E4DCCD', token: '--pierre', use: 'Fonds secondaires, filets, cartes.' },
+      { name: 'Gravier', hex: '#A89F90', token: '--gravier', use: 'Bordures de champs, éléments inactifs.' },
+      { name: 'Garrigue', hex: '#7D8463', token: '--garrigue', use: 'Surtitres, pastilles, détails.' },
+      { name: 'Pin d’Alep', hex: '#2F3B2A', token: '--pin', use: 'Logo, titres, bandeaux sombres.' },
+      { name: 'Encre', hex: '#23251F', token: '--encre', use: 'Texte courant.' },
+      { name: 'Crépi', hex: '#C99A82', token: '--crepi', use: 'Façade rosée. Accent décoratif, jamais pour du texte.' },
+      { name: 'Tuile', hex: '#A3532F', token: '--tuile', use: 'Appel à l’action, liens. Avec parcimonie.' }
+    ];
+    const tokens = `:root {
+  /* Couleurs */
+  --chaux: #F4F0E8;      /* fond principal */
+  --chaux-clair: #FBF9F4;/* cartes */
+  --pierre: #E4DCCD;     /* fonds secondaires */
+  --filet: #D9D0BF;      /* séparateurs */
+  --gravier: #A89F90;    /* bordures de champs */
+  --garrigue: #7D8463;   /* surtitres */
+  --pin: #2F3B2A;        /* titres, logo, bandeaux */
+  --encre: #23251F;      /* texte */
+  --encre-douce: #4A4E3F;/* texte secondaire */
+  --crepi: #C99A82;      /* accent décoratif */
+  --tuile: #A3532F;      /* CTA, liens */
+  --tuile-hover: #8A4426;
+
+  /* Typographie (Google Fonts) */
+  --font-titre: 'Cormorant Garamond', Georgia, serif; /* 400, 400 italic */
+  --font-texte: 'Instrument Sans', system-ui, sans-serif; /* 400, 500, 600 */
+  --fs-display: clamp(64px, 12vw, 168px);
+  --fs-h1: clamp(40px, 5vw, 68px);
+  --fs-h2: clamp(30px, 3.5vw, 44px);
+  --fs-h3: 28px;
+  --fs-lead: 20px;
+  --fs-body: 17px;
+  --fs-small: 14px;
+  --fs-label: 12px;  /* capitales, letter-spacing .14em */
+  --lh-titre: 1.05;
+  --lh-texte: 1.65;
+
+  /* Espacements (base 8) */
+  --space-1: 8px; --space-2: 16px; --space-3: 24px;
+  --space-4: 32px; --space-6: 48px; --space-8: 64px; --space-12: 96px;
+  --container: 1240px;
+  --gutter: clamp(20px, 4vw, 56px);
+
+  /* Formes */
+  --radius: 0;          /* angles droits partout */
+  --radius-pill: 999px; /* pastilles uniquement */
+  --border: 1px solid var(--filet);
+  --shadow: none;
+
+  /* Mouvement */
+  --transition: 200ms ease-out;
+
+  /* Contact */
+  --contact-email: "${email}";
+}`;
+    return {
+      brandName, initial, colors, tokens, email,
+      mailto: 'mailto:' + email,
+      copyLabel: this.state.copied ? 'Copié' : 'Copier',
+      copyTokens: () => { navigator.clipboard?.writeText(tokens); this.setState({ copied: true }); setTimeout(() => this.setState({ copied: false }), 1600); },
+      assets: [
+        { k: 'Vue', v: 'Très belle vue' }, { k: 'Maison', v: 'Très grande' },
+        { k: 'Piscine', v: 'Avec poolhouse' }, { k: 'Jardin', v: 'Grand terrain' },
+        { k: 'Cheminée', v: 'Feu de bois' }, { k: 'Barbecue', v: 'Cuisine d’été' },
+        { k: 'Garage', v: 'Grand garage' }, { k: 'Boulodrome', v: 'Terrain de pétanque' }, { k: 'Cadre', v: 'Calme, face au massif' }
+      ],
+      typeScale: [
+        { label: 'Display · 168', family: "'Cormorant Garamond',serif", size: 'clamp(48px,8vw,120px)', style: 'normal', ls: '-.02em', tt: 'none', sample: brandName },
+        { label: 'H1 · 68', family: "'Cormorant Garamond',serif", size: 'clamp(36px,5vw,68px)', style: 'normal', ls: '0', tt: 'none', sample: 'Face au massif' },
+        { label: 'H2 · 44 italique', family: "'Cormorant Garamond',serif", size: 'clamp(28px,3.5vw,44px)', style: 'italic', ls: '0', tt: 'none', sample: 'La piscine et le poolhouse' },
+        { label: 'Lead · 20', family: "'Instrument Sans',sans-serif", size: '20px', style: 'normal', ls: '0', tt: 'none', sample: 'Une grande maison face au massif.' },
+        { label: 'Texte · 17', family: "'Instrument Sans',sans-serif", size: '17px', style: 'normal', ls: '0', tt: 'none', sample: 'Le séjour s’ouvre sur la terrasse et le jardin.' },
+        { label: 'Surtitre · 12', family: "'Instrument Sans',sans-serif", size: '12px', style: 'normal', ls: '.14em', tt: 'uppercase', sample: 'À vendre · Solliès-Toucas' }
+      ],
+      principles: [
+        { t: 'Concret', d: 'Des faits et des gestes : la cheminée l’hiver, le barbecue l’été, le garage où tout se range. Pas de superlatifs.' },
+        { t: 'Provençal, sans folklore', d: 'Restanques, massif, garrigue, chaux : oui. Cigales, lavande et santons : non.' },
+        { t: 'Posé', d: 'Phrases courtes, vouvoiement, pas de point d’exclamation. On ne presse jamais l’acheteur.' }
+      ],
+      wordsYes: ['massif boisé', 'collines', 'restanques', 'garrigue', 'chaux', 'allée de gravier', 'terrasse', 'fraîcheur', 'lumière du soir', 'feu de bois', 'cuisine d’été', 'partie de boules', 'vue dégagée', 'au calme', 'à vivre'],
+      wordsNo: ['coup de cœur', 'rare', 'exceptionnel', 'prestations', 'villa d’architecte', 'à saisir', 'idéalement situé', 'cadre idyllique', 'luxe', '!!!'],
+      shots: [
+        { n: '01 Héro', d: 'Façade et piscine, fin de journée' },
+        { n: '02 Vue', d: 'Panorama sur le massif depuis la terrasse' },
+        { n: '03 Piscine', d: 'Plan large, eau calme' },
+        { n: '04 Poolhouse', d: 'Extérieur, puis intérieur' },
+        { n: '05 Barbecue', d: 'Coin cuisine d’été, table dressée sans personne' },
+        { n: '06 Jardin', d: 'Plan large, arbres et pelouse' },
+        { n: '06b Boulodrome', d: 'Terrain ratissé, boules posées, lumière rasante' },
+        { n: '07 Séjour', d: 'Avec la cheminée, idéalement allumée' },
+        { n: '08 Chambres', d: 'Une photo par chambre, lit fait' },
+        { n: '09 Garage', d: 'Porte ouverte, vide et rangé' },
+        { n: '10 Allée', d: 'Portail et plaque « Sandiade », détail' },
+        { n: '11 Drone', d: 'Vue aérienne du terrain' },
+        { n: '12 Détails', d: 'Matières : pierre, tomettes, volets' }
+      ],
+      facts: [
+        { v: '— m²', k: 'Habitables' }, { v: '— m²', k: 'Terrain' }, { v: '—', k: 'Chambres' },
+        { v: '1', k: 'Piscine' }, { v: '1', k: 'Poolhouse' }, { v: '1', k: 'Cheminée' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
