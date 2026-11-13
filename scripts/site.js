@@ -1,3 +1,13 @@
+// Vidéo d'accueil : pas de lecture automatique si le visiteur a demandé moins d'animations.
+(function () {
+  var v = document.querySelector('.hero__video');
+  if (!v || !window.matchMedia) return;
+  var mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+  function apply() { if (mq.matches) { v.removeAttribute('autoplay'); v.pause(); } else { v.play().catch(function () {}); } }
+  apply();
+  if (mq.addEventListener) mq.addEventListener('change', apply);
+})();
+
 // Formulaire de visite : envoie la demande à /api/visite.
 // Si le serveur ne répond pas, propose d'écrire par e-mail avec la demande déjà rédigée.
 (function () {

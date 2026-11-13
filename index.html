@@ -7,7 +7,7 @@
 <meta name="description" content="Une grande maison provençale face au massif boisé, au 480, chemin des Hubacs à Solliès-Toucas. Piscine et poolhouse, grand jardin, boulodrome, vue dégagée. Vente de particulier à particulier.">
 <meta property="og:title" content="Maison des Hubacs · Solliès-Toucas, Var">
 <meta property="og:description" content="Une grande maison provençale face au massif boisé. Piscine, poolhouse, grand jardin, boulodrome.">
-<meta property="og:image" content="assets/img/allee.jpg">
+<meta property="og:image" content="assets/img/maison-drone.jpg">
 <meta property="og:locale" content="fr_FR">
 <meta name="theme-color" content="#2F3B2A">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -48,9 +48,15 @@
         <a class="btn btn--ghost" href="#maison">Voir la maison</a>
       </div>
     </div>
-    <!-- Photo provisoire : à remplacer par la photo héro (façade et piscine, lumière de fin de journée) -->
+    <!-- Vidéo drone (0 à 11 s du tournage DJI_0009, sans son), photo de repli si la vidéo ne se lance pas -->
     <figure class="photo hero__photo">
-      <img src="assets/img/allee.jpg" alt="L’allée de gravier, le mur blanc chaulé et le portail, avec le massif boisé en arrière-plan" width="717" height="400" fetchpriority="high">
+      <video class="hero__video" autoplay muted loop playsinline preload="metadata"
+             poster="assets/img/drone-poster.jpg"
+             aria-label="Vue au drone de la maison, de la piscine et du jardin, face au massif">
+        <source src="assets/video/drone-1080.mp4" type="video/mp4" media="(min-width: 1100px)">
+        <source src="assets/video/drone-720.mp4" type="video/mp4">
+        <source src="assets/video/drone-720.webm" type="video/webm">
+      </video>
     </figure>
   </section>
 
@@ -92,7 +98,7 @@
           <p>Une grande pièce de vie ouverte sur la terrasse, avec un vrai feu de bois pour l’hiver.</p>
         </article>
         <article class="card">
-          <div class="photo photo--todo" data-label="photo : chambres, lit fait" role="img" aria-label="Photo à venir : les chambres"></div>
+          <figure class="photo"><img src="assets/img/chambre-6.jpg" alt="Une chambre au carrelage gris, lit double, fauteuil et porte-fenêtre sur le jardin" width="1024" height="683" loading="lazy"></figure>
           <span class="label label--tuile">Intérieur</span>
           <h3>Les chambres</h3>
           <p>Une très grande maison, de la place pour la famille et pour les amis qui restent le week-end.</p>
@@ -103,6 +109,37 @@
           <h3>Le grand garage</h3>
           <p>Les voitures, les vélos, les outils du jardin : tout se range, rien ne traîne dehors.</p>
         </article>
+      </div>
+
+      <div class="gallery-head">
+        <span class="label">En images</span>
+        <h3>Les pièces</h3>
+      </div>
+      <div class="gallery">
+        <figure>
+          <a class="photo" href="assets/img/salon.jpg" target="_blank" rel="noopener"><img src="assets/img/salon.jpg" alt="Le salon, ouvert sur le jardin par une baie vitrée" width="1024" height="683" loading="lazy"></a>
+          <figcaption class="caption">Le salon</figcaption>
+        </figure>
+        <figure>
+          <a class="photo" href="assets/img/cuisine.jpg" target="_blank" rel="noopener"><img src="assets/img/cuisine.jpg" alt="La cuisine équipée et la table de repas, devant la porte-fenêtre" width="1024" height="683" loading="lazy"></a>
+          <figcaption class="caption">La cuisine</figcaption>
+        </figure>
+        <figure>
+          <a class="photo" href="assets/img/chambre-5.jpg" target="_blank" rel="noopener"><img src="assets/img/chambre-5.jpg" alt="Une chambre avec deux lits et une fenêtre sur le jardin" width="1024" height="683" loading="lazy"></a>
+          <figcaption class="caption">Une chambre à deux lits</figcaption>
+        </figure>
+        <figure>
+          <a class="photo" href="assets/img/salle-de-bain.jpg" target="_blank" rel="noopener"><img src="assets/img/salle-de-bain.jpg" alt="Salle de bain avec vasque en pierre sur un meuble en bois" width="1024" height="768" loading="lazy"></a>
+          <figcaption class="caption">La salle de bain</figcaption>
+        </figure>
+        <figure>
+          <a class="photo" href="assets/img/wc.jpg" target="_blank" rel="noopener"><img src="assets/img/wc.jpg" alt="Toilettes séparées avec lave-mains" width="576" height="768" loading="lazy"></a>
+          <figcaption class="caption">Les toilettes séparées</figcaption>
+        </figure>
+        <figure>
+          <a class="photo" href="assets/img/buanderie.jpg" target="_blank" rel="noopener"><img src="assets/img/buanderie.jpg" alt="Buanderie avec évier et emplacements pour lave-linge et sèche-linge" width="1024" height="768" loading="lazy"></a>
+          <figcaption class="caption">La buanderie</figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -117,7 +154,7 @@
       </div>
 
       <div class="wide">
-        <div class="photo photo--todo" data-label="photo : piscine, plan large, eau calme" role="img" aria-label="Photo à venir : la piscine"></div>
+        <figure class="photo"><img src="assets/img/piscine-drone.jpg" alt="La piscine et sa plage en bois, vues du ciel, entre la maison et le jardin" width="1600" height="900" loading="lazy"></figure>
         <div class="photo photo--todo" data-label="photo : panorama sur le massif depuis la terrasse" role="img" aria-label="Photo à venir : la vue sur le massif"></div>
       </div>
 
@@ -141,7 +178,7 @@
           <p>Un vrai terrain de pétanque, ratissé, pour la partie de boules de fin de journée.</p>
         </article>
         <article class="card">
-          <div class="photo photo--todo" data-label="photo : jardin, arbres et pelouse" role="img" aria-label="Photo à venir : le jardin"></div>
+          <figure class="photo"><img src="assets/img/jardin-balancoires.jpg" alt="La pelouse et les balançoires, une haie fleurie et le massif boisé derrière la maison" width="1024" height="768" loading="lazy"></figure>
           <span class="label label--tuile">Jardin</span>
           <h3>Un grand jardin</h3>
           <p>De la place pour les enfants, les amis, les arbres et l’ombre. La vue reste dégagée sur les collines.</p>
@@ -193,7 +230,7 @@
           <img src="assets/img/plan.jpg" alt="Plan d’accès au 480, chemin des Hubacs" width="297" height="325">
         </figure>
         <figure class="photo photo--sat">
-          <img src="assets/img/satellite.jpg" alt="Vue aérienne de la propriété, entre le chemin des Hubacs et le chemin des Cades" width="755" height="598">
+          <img src="assets/img/maison-drone.jpg" alt="La maison, la piscine et le jardin vus du ciel" width="1280" height="720" loading="lazy">
         </figure>
       </div>
     </div>
@@ -251,6 +288,6 @@
   </div>
 </footer>
 
-<script src="scripts/site.js?v=2" defer></script>
+<script src="scripts/site.js?v=3" defer></script>
 </body>
 </html>

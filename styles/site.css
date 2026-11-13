@@ -120,7 +120,8 @@ h1, h2, h3 { margin: 0; font-family: var(--font-titre); font-weight: 400; color:
 .hero .lead { max-width: 460px; }
 .hero__actions { display: flex; gap: 12px; flex-wrap: wrap; }
 .hero__photo { min-height: clamp(360px, 70vh, 720px); }
-.hero__photo img { object-position: 12% 50%; }
+.hero__photo { position: relative; }
+.hero__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 45% 50%; display: block; }
 
 /* ---------- Sections ---------- */
 .section { padding: var(--space-12) 0; border-bottom: 1px solid var(--filet); }
@@ -176,6 +177,16 @@ h1, h2, h3 { margin: 0; font-family: var(--font-titre); font-weight: 400; color:
 .card h3 { font-size: var(--fs-h3); line-height: 1.1; }
 .card p { font-size: 15px; line-height: 1.6; color: var(--encre-douce); }
 
+/* Galerie des pièces */
+.gallery-head { margin-top: var(--space-8); margin-bottom: var(--space-3); display: flex; flex-direction: column; gap: 8px; }
+.gallery-head h3 { font-size: var(--fs-h2); line-height: 1.1; }
+.gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: var(--space-2); }
+.gallery figure { margin: 0; }
+.gallery .photo { display: block; aspect-ratio: 3 / 2; }
+.gallery .photo img { transition: transform 400ms ease-out; }
+.gallery .photo:hover img { transform: scale(1.03); }
+.gallery .caption { margin-top: 8px; }
+
 /* Bandeau Pin */
 .band { background: var(--pin); color: var(--chaux); padding: clamp(56px, 8vw, 112px) 0; }
 .band blockquote {
@@ -199,7 +210,7 @@ h1, h2, h3 { margin: 0; font-family: var(--font-titre); font-weight: 400; color:
 .maps { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2); }
 .maps .photo { aspect-ratio: 4 / 3; border: 1px solid var(--pierre); }
 .maps .photo--plan img { filter: grayscale(.6) sepia(.25); }
-.maps .photo--sat img { filter: saturate(.8); }
+.maps .photo--sat img { filter: saturate(.85); }
 @media (max-width: 560px) { .maps { grid-template-columns: 1fr; } }
 
 /* ---------- Formulaire ---------- */
