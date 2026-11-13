@@ -163,6 +163,14 @@ h1, h2, h3 { margin: 0; font-family: var(--font-titre); font-weight: 400; color:
 .facts dt { font-size: 13px; color: var(--encre-douce); }
 @media (max-width: 420px) { .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
+/* Détail des pièces */
+.rooms { margin: var(--space-3) 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-4); }
+.rooms div { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--filet); font-size: 15px; }
+.rooms dt { color: var(--encre-douce); }
+.rooms dd { margin: 0; color: var(--pin); font-variant-numeric: lining-nums tabular-nums; }
+.rooms-note { margin-top: 10px; font-size: 13px; color: var(--encre-douce); }
+@media (max-width: 420px) { .rooms { grid-template-columns: 1fr; } }
+
 /* Cartes « espace » */
 .cards {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
