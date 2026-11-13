@@ -181,11 +181,16 @@ h1, h2, h3 { margin: 0; font-family: var(--font-titre); font-weight: 400; color:
 .gallery-head { margin-top: var(--space-8); margin-bottom: var(--space-3); display: flex; flex-direction: column; gap: 8px; }
 .gallery-head h3 { font-size: var(--fs-h2); line-height: 1.1; }
 .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: var(--space-2); }
+.gallery--4 { grid-template-columns: 1fr; }
+@media (min-width: 560px) { .gallery--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1000px) { .gallery--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 .gallery figure { margin: 0; }
 .gallery .photo { display: block; aspect-ratio: 3 / 2; }
 .gallery .photo img { transition: transform 400ms ease-out; }
 .gallery .photo:hover img { transform: scale(1.03); }
 .gallery .caption { margin-top: 8px; }
+.gallery-intro { max-width: 640px; font-size: var(--fs-body); }
+.gallery + .gallery-head { margin-top: var(--space-6); }
 
 /* Bandeau Pin */
 .band { background: var(--pin); color: var(--chaux); padding: clamp(56px, 8vw, 112px) 0; }
