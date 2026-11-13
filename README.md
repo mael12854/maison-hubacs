@@ -50,4 +50,3 @@ accès **Private**, région Paris (cdg1), puis le connecter au projet. Redéploy
 - **Photos** : chaque emplacement rayé (`<div class="photo photo--todo" data-label="…">`) est à remplacer par
   `<figure class="photo"><img src="assets/img/….jpg" alt="…"></figure>`. La liste des prises de vue
   est dans la charte, section 06. Le haut de page est une vidéo drone en boucle (`assets/video/`).
-- **Fiche chiffres** (`<dl class="facts">`) : surface habitable, terrain, nombre de chambres.
